@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="571.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ragdoll.FXMLDocumentController">
+   <children>
+      <Canvas fx:id="canvas" height="571.0" width="720.0" />
+      <TabPane fx:id="controlPane" layoutX="389.0" layoutY="299.0" prefHeight="216.0" prefWidth="256.0" style="-fx-border-color: BLACK; -fx-border-width: 2;" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab fx:id="environmentTab" text="Bus Controls">
+            <content>
+              <AnchorPane fx:id="environmentTabPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: e9e9e9;">
+                     <children>
+                        <Label fx:id="targetVelocityLabel" layoutX="8.0" layoutY="14.0" text="Target Velocity:">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </Label>
+                        <Spinner fx:id="targetVelocitySpinner" disable="true" layoutX="113.0" layoutY="9.0" prefHeight="27.0" prefWidth="92.0" />
+                        <Label fx:id="targetVelocityUnitsLabel" layoutX="209.0" layoutY="14.0" text="km/h" />
+                        <Label fx:id="environmentCollisionToggleLabel" layoutX="8.0" layoutY="54.0" prefHeight="36.0" prefWidth="191.0" text="Toggle Environment Collision Detection/Response:" wrapText="true">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </Label>
+                        <ToggleButton fx:id="environmentCollisionToggleButton" layoutX="195.0" layoutY="54.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="48.0" text="OFF">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </ToggleButton>
+                        <Label fx:id="rectangleCollisionToggleLabel" layoutX="8.0" layoutY="98.0" prefHeight="36.0" prefWidth="150.0" text="Toggle Rectangle Collision Detection:" wrapText="true">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="rectangleCollisionBetaToggleLabel" layoutX="122.0" layoutY="99.0" prefHeight="17.0" prefWidth="40.0" text="BETA" textFill="#1312ff" wrapText="true">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </Label>
+                        <ToggleButton fx:id="rectangleCollisionToggleButton" layoutX="195.0" layoutY="103.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="48.0" text="OFF">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </ToggleButton>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab fx:id="entityTab" text="Object Controls">
+            <content>
+              <AnchorPane fx:id="entityTabPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: e9e9e9;">
+                     <children>
+                        <Label fx:id="addObjectLabel" layoutX="14.0" layoutY="19.0" text="Add an object:">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font></Label>
+                        <MenuButton fx:id="addObjectMenuButton" layoutX="118.0" layoutY="14.0" mnemonicParsing="false" text="Choose Type">
+                          <items>
+                            <MenuItem fx:id="rectangleMenuItem" mnemonicParsing="false" text="Rectangle" />
+                            <MenuItem fx:id="circleMenuItem" mnemonicParsing="false" text="Circle" />
+                              <MenuItem fx:id="springMenuItem" mnemonicParsing="false" text="Spring" />
+                          </items>
+                        </MenuButton>
+                        <Label fx:id="removeObjectLabel" layoutX="12.0" layoutY="84.0" text="Remove an object:">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </Label>
+                        <MenuButton fx:id="removeObjectMenuButton" layoutX="132.0" layoutY="70.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="106.0" text="Select Object" wrapText="true" />
+                        <Label fx:id="rectangleWidthLabel" layoutX="14.0" layoutY="20.0" text="Width (px):" visible="false">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </Label>
+                        <Spinner fx:id="rectangleWidthSpinner" layoutX="90.0" layoutY="15.0" prefHeight="27.0" prefWidth="71.0" visible="false" />
+                        <Label fx:id="rectangleHeightLabel" layoutX="12.0" layoutY="51.0" text="Height (px):" visible="false">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </Label>
+                        <Spinner fx:id="rectangleHeightSpinner" layoutX="90.0" layoutY="46.0" prefHeight="27.0" prefWidth="71.0" visible="false" />
+                        <Label fx:id="rectangleMassLabel" layoutX="12.0" layoutY="84.0" text="Mass (kg):" visible="false">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </Label>
+                        <Spinner fx:id="rectangleMassSpinner" layoutX="90.0" layoutY="79.0" prefHeight="27.0" prefWidth="71.0" visible="false" />
+                        <Label fx:id="objectSelectPositionLabel" layoutX="13.0" layoutY="115.0" prefHeight="34.0" prefWidth="119.0" text="Click on screen to select spawn point!" visible="false" wrapText="true">
+                           <font>
+                              <Font name="Arial" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="objectPositionLabel" layoutX="13.0" layoutY="155.0" text="x:              y:" visible="false">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="objectPositionXLabel" layoutX="27.0" layoutY="155.0" visible="false">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="objectPositionYLabel" layoutX="93.0" layoutY="155.0" visible="false">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="rectangleAddButton" layoutX="177.0" layoutY="15.0" mnemonicParsing="false" prefHeight="137.0" prefWidth="59.0" text="ADD!" textFill="#22bc41" visible="false">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </Button>
+                        <Label fx:id="circleRadiusLabel" layoutX="16.0" layoutY="17.0" prefHeight="16.0" prefWidth="86.0" text="Radius (px):" visible="false">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="circleMassLabel" layoutX="15.0" layoutY="58.0" text="Mass (kg):" visible="false">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </Label>
+                        <Spinner fx:id="circleRadiusSpinner" layoutX="96.0" layoutY="15.0" prefHeight="27.0" prefWidth="71.0" visible="false" />
+                        <Spinner fx:id="circleMassSpinner" layoutX="96.0" layoutY="53.0" prefHeight="27.0" prefWidth="71.0" visible="false" />
+                        <Button fx:id="circleAddButton" layoutX="177.0" layoutY="16.0" mnemonicParsing="false" prefHeight="137.0" prefWidth="59.0" text="ADD!" textFill="#22bc41" visible="false">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </Button>
+                        <Label fx:id="springSelectObjectLabel" layoutX="14.0" layoutY="8.0" prefHeight="52.0" prefWidth="89.0" text="Select the object to attach to:" visible="false" wrapText="true">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="springSelectObjectComboBox" layoutX="111.0" layoutY="16.0" prefHeight="30.0" prefWidth="131.0" promptText="Select Object" visible="false" />
+                        <Label fx:id="springRectangleCornerLabel" layoutX="12.0" layoutY="64.0" prefHeight="52.0" prefWidth="95.0" text="Select the corner to attach to:" visible="false" wrapText="true">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="springRectangleCornerComboBox" layoutX="111.0" layoutY="76.0" prefHeight="30.0" prefWidth="132.0" promptText="Select Corner" visible="false" />
+                        <Button fx:id="springAddButton" layoutX="139.0" layoutY="127.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="95.0" text="ADD!" textFill="#22bc41" visible="false">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </Button>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+      <Button fx:id="pauseButton" layoutX="633.0" layoutY="14.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="74.0" text="Pause">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
